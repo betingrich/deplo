@@ -29,7 +29,7 @@ document.getElementById('checkFork').addEventListener('click', async () => {
         } else {
             message.innerText = 'Your fork is ready! Redirecting to Heroku...';
             setTimeout(() => {
-                window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD';
+                window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/betingrich4/Whatsapp';
             }, 2000);
         }
     } catch (error) {
