@@ -115,28 +115,27 @@ button {
     padding: 0.5rem 1rem;
     font-size: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px; /* Rounded corners */
     background: transparent;
     color: white;
     cursor: pointer;
-    transition: background 0.3s ease;
     position: relative;
     overflow: hidden;
+    margin: 0.5rem 0;
     border: 2px solid transparent;
 }
 
-/* Neon Button Effect */
+/* Neon Edge Animation */
 button::before {
     content: '';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 10px; /* Match button border radius */
     background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
     z-index: -1;
-    border-radius: 5px;
     animation: glow 2s linear infinite;
 }
 
@@ -153,17 +152,14 @@ button:hover::before {
     }
 }
 
-#checkFork {
-    margin-bottom: 1rem;
-}
-
+/* Fork Now Button */
 #forkRepo {
-    background: rgba(40, 167, 69, 0.3);
-    border: 2px solid #28a745;
+    border-color: #00ffcc; /* Neon border color */
 }
 
-#forkRepo:hover {
-    background: rgba(40, 167, 69, 0.5);
+/* Sync Repo Button */
+#syncRepo {
+    border-color: #ff00ff; /* Neon border color */
 }
 
 /* Message */
