@@ -7,6 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Toggle Menu -->
+    <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="https://botto2-608d38531298.herokuapp.com/" target="_blank">Get Session</a></li>
+            <li><a href="https://example.com" target="_blank">Follow Our Channel</a></li> <!-- Replace with your channel link -->
+        </ul>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
         <h1>Deploy Your Bot</h1>
         <p>Enter your GitHub username to check if you've forked the repo.</p>
@@ -16,6 +30,7 @@
         <button id="forkRepo" style="display: none;">Fork Repo on GitHub</button>
     </div>
 
+    <!-- Video Background -->
     <video autoplay muted loop id="bgVideo">
         <source src="https://files.catbox.moe/t2f7qm.mp4" type="video/mp4">
         Your browser does not support the video tag.
