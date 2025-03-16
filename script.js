@@ -1,0 +1,35 @@
+document.getElementById('checkFork').addEventListener('click', async () => {
+    const username = document.getElementById('username').value.trim();
+    const message = document.getElementById('message');
+    const forkRepoButton = document.getElementById('forkRepo');
+
+    if (!username) {
+        message.innerText = 'Please enter a GitHub username.';
+        return;
+    }
+
+    try {
+        // Check if the user has forked the repo
+        const response = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks`);
+        const forks = await response.json();
+        const userFork = forks.find(fork => fork.owner.login === username);
+
+        if (!userFork) {
+            message.innerText = 'You have not forked the repo.';
+            forkRepoButton.style.display = 'block';
+        } else {
+            message.innerText = 'Your fork is ready! Redirecting to Heroku...';
+            setTimeout(() => {
+                window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/betingrich4/Whatsapp';
+            }, 2000);
+        }
+    } catch (error) {
+        message.innerText = 'An error occurred. Please try again.';
+        console.error(error);
+    }
+});
+
+// Redirect to fork the repo
+document.getElementById('forkRepo').addEventListener('click', () => {
+    window.location.href = 'https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD/fork';
+});
