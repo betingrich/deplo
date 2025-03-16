@@ -9,8 +9,9 @@ document.getElementById('checkFork').addEventListener('click', async () => {
     }
 
     try {
-        // Check if the user has forked the repo
-        const response = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks`);
+        // Force a fresh check by adding a timestamp query parameter
+        const timestamp = new Date().getTime();
+        const response = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks?timestamp=${timestamp}`);
         const forks = await response.json();
         const userFork = forks.find(fork => fork.owner.login === username);
 
