@@ -6,6 +6,16 @@ menuToggle.addEventListener('click', () => {
     menu.classList.toggle('active');
 });
 
+// Close Menu When Clicking Outside
+document.addEventListener('click', (event) => {
+    const isClickInsideMenu = menu.contains(event.target);
+    const isClickOnMenuToggle = menuToggle.contains(event.target);
+
+    if (!isClickInsideMenu && !isClickOnMenuToggle && menu.classList.contains('active')) {
+        menu.classList.remove('active');
+    }
+});
+
 // Fork Check Logic
 document.getElementById('checkFork').addEventListener('click', async () => {
     const username = document.getElementById('username').value.trim();
