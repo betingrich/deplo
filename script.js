@@ -21,6 +21,7 @@ document.getElementById('checkFork').addEventListener('click', async () => {
     const username = document.getElementById('username').value.trim();
     const message = document.getElementById('message');
     const forkRepoButton = document.getElementById('forkRepo');
+    const syncRepoButton = document.getElementById('syncRepo');
 
     if (!username) {
         message.innerText = 'Please enter a GitHub username.';
@@ -36,6 +37,7 @@ document.getElementById('checkFork').addEventListener('click', async () => {
         if (!userFork) {
             message.innerText = 'You have not forked the repo.';
             forkRepoButton.style.display = 'block';
+            syncRepoButton.style.display = 'none';
             return;
         }
 
@@ -51,8 +53,9 @@ document.getElementById('checkFork').addEventListener('click', async () => {
 
         // Compare commit hashes
         if (originalRepoHash !== userRepoHash) {
-            message.innerText = 'Please sync your fork before deploying for updates.';
-            forkRepoButton.style.display = 'block';
+            message.innerText = 'Your fork is not up-to-date. Please sync your fork before deploying.';
+            forkRepoButton.style.display = 'none';
+            syncRepoButton.style.display = 'block';
         } else {
             message.innerText = 'Your fork is up-to-date! Redirecting to Heroku...';
             setTimeout(() => {
@@ -68,4 +71,9 @@ document.getElementById('checkFork').addEventListener('click', async () => {
 // Redirect to fork the repo
 document.getElementById('forkRepo').addEventListener('click', () => {
     window.location.href = 'https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD/fork';
+});
+
+// Redirect to sync the repo
+document.getElementById('syncRepo').addEventListener('click', () => {
+    window.location.href = 'https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD';
 });
