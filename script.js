@@ -1,3 +1,12 @@
+// Toggle Menu
+const menuToggle = document.getElementById('menuToggle');
+const menu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('active');
+});
+
+// Fork Check Logic
 document.getElementById('checkFork').addEventListener('click', async () => {
     const username = document.getElementById('username').value.trim();
     const message = document.getElementById('message');
@@ -9,7 +18,6 @@ document.getElementById('checkFork').addEventListener('click', async () => {
     }
 
     try {
-        // Force a fresh check by adding a timestamp query parameter
         const timestamp = new Date().getTime();
         const response = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks?timestamp=${timestamp}`);
         const forks = await response.json();
@@ -21,7 +29,7 @@ document.getElementById('checkFork').addEventListener('click', async () => {
         } else {
             message.innerText = 'Your fork is ready! Redirecting to Heroku...';
             setTimeout(() => {
-                window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/betingrich4/Whatsapp';
+                window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD';
             }, 2000);
         }
     } catch (error) {
