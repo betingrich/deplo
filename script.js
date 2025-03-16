@@ -73,7 +73,12 @@ document.getElementById('forkRepo').addEventListener('click', () => {
     window.location.href = 'https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD/fork';
 });
 
-// Redirect to sync the repo
+// Redirect to sync the user's forked repo
 document.getElementById('syncRepo').addEventListener('click', () => {
-    window.location.href = 'https://github.com/Demon-Slayer2/DEMONS-SLAYER-XMD';
+    const username = document.getElementById('username').value.trim();
+    if (username) {
+        window.location.href = `https://github.com/${username}/DEMONS-SLAYER-XMD`;
+    } else {
+        alert('Please enter your GitHub username first.');
+    }
 });
