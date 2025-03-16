@@ -28,16 +28,33 @@ document.getElementById('checkFork').addEventListener('click', async () => {
     }
 
     try {
-        const timestamp = new Date().getTime();
-        const response = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks?timestamp=${timestamp}`);
-        const forks = await response.json();
+        // Check if the user has forked the repo
+        const forksResponse = await fetch(`https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/forks`);
+        const forks = await forksResponse.json();
         const userFork = forks.find(fork => fork.owner.login === username);
 
         if (!userFork) {
             message.innerText = 'You have not forked the repo.';
             forkRepoButton.style.display = 'block';
+            return;
+        }
+
+        // Get the latest commit hash of the original repo
+        const originalRepoResponse = await fetch('https://api.github.com/repos/Demon-Slayer2/DEMONS-SLAYER-XMD/commits/main');
+        const originalRepoCommit = await originalRepoResponse.json();
+        const originalRepoHash = originalRepoCommit.sha;
+
+        // Get the latest commit hash of the user's fork
+        const userRepoResponse = await fetch(`https://api.github.com/repos/${username}/DEMONS-SLAYER-XMD/commits/main`);
+        const userRepoCommit = await userRepoResponse.json();
+        const userRepoHash = userRepoCommit.sha;
+
+        // Compare commit hashes
+        if (originalRepoHash !== userRepoHash) {
+            message.innerText = 'Please sync your fork before deploying for updates.';
+            forkRepoButton.style.display = 'block';
         } else {
-            message.innerText = 'Your fork is ready! Redirecting to Heroku...';
+            message.innerText = 'Your fork is up-to-date! Redirecting to Heroku...';
             setTimeout(() => {
                 window.location.href = 'https://dashboard.heroku.com/new?template=https://github.com/betingrich4/Whatsapp';
             }, 2000);
