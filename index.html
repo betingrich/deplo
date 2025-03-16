@@ -16,18 +16,20 @@
     <div class="menu" id="menu">
         <ul>
             <li><a href="https://botto2-608d38531298.herokuapp.com/" target="_blank">Get Session</a></li>
-            <li><a href="https://whatsapp.com/channel/0029Vajvy2kEwEjwAKP4SI0x" target="_blank">Follow Our Channel</a></li> <!-- Replace with your channel link -->
+            <li><a href="https://whatsapp.com/channel/0029Vajvy2kEwEjwAKP4SI0x" target="_blank">Follow Our Channel</a></li>
         </ul>
     </div>
 
     <!-- Main Content -->
     <div class="container">
         <h1>Deploy Your Bot</h1>
-        <p>Enter your GitHub username.</p>
+        <p>Enter your GitHub username to check if you've forked the repo.</p>
         <input type="text" id="username" placeholder="GitHub Username">
         <button id="checkFork">Check Fork</button>
         <div id="message"></div>
-        <button id="forkRepo" style="display: none;">Fork Repo on GitHub</button>
+        <!-- Fork and Sync Buttons -->
+        <button id="forkRepo" style="display: none;">Fork Now</button>
+        <button id="syncRepo" style="display: none;">Sync Repo</button>
     </div>
 
     <!-- Video Background -->
