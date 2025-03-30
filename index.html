@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fork Verifier - Instructions</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fork Verifier</title>
     <style>
-        /* General Styles */
+        /* Base Styles */
         body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
         /* Video Background */
-        #indexVideo {
+        #bgVideo {
             position: fixed;
             top: 0;
             left: 0;
@@ -28,138 +28,55 @@
         }
 
         /* Main Container */
-        .instructions-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .container {
+            max-width: 90%;
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
         }
 
-        /* Profile Circle - Fully Responsive */
-        .profile-circle {
-            width: 20vmin;
-            height: 20vmin;
-            min-width: 120px;
-            min-height: 120px;
+        /* Profile Image */
+        .profile-img {
+            width: 25vw;
+            height: 25vw;
             max-width: 180px;
             max-height: 180px;
+            min-width: 120px;
+            min-height: 120px;
             border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 2rem;
-            border: 3px solid #00ffcc;
-            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-        }
-
-        .profile-circle img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            margin: 0 auto 20px;
+            display: block;
+            border: 2px solid #00ffcc;
         }
 
-        /* Title with Neon Animation */
+        /* Text Elements */
         h1 {
-            margin-bottom: 2rem;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            position: relative;
-            display: inline-block;
-            padding: 0 15px;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            margin: 0 0 15px 0;
         }
 
-        h1::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-            background-size: 400% 400%;
-            z-index: -1;
-            animation: glow 3s linear infinite;
-            opacity: 0.7;
+        h2 {
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            margin: 20px 0 10px 0;
         }
 
-        /* Instructions Box */
-        .instructions {
-            text-align: left;
-            margin-bottom: 2rem;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 1.5rem;
-            border-radius: 10px;
-            width: 100%;
-            box-sizing: border-box;
-            border: 1px solid rgba(0, 255, 204, 0.3);
-            position: relative;
-        }
-
-        .instructions::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-            background-size: 400% 400%;
-            z-index: -1;
-            animation: glow 3s linear infinite;
-            opacity: 0.3;
-        }
-
-        .instructions h2 {
-            margin-top: 0;
-            border-bottom: 1px solid rgba(0, 255, 204, 0.3);
-            padding-bottom: 0.5rem;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-        }
-
-        /* Numbered Instructions */
-        .instructions ol {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-
-        .instructions li {
-            position: relative;
-            padding-left: 2em;
-            margin-bottom: 0.8rem;
-            line-height: 1.5;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
-        }
-
-        .instructions li strong {
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-            color: #00ffcc;
-        }
-
-        /* Continue Button with Neon Animation */
+        /* Continue Button */
         .continue-btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            background-color: transparent;
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 20px 0;
             color: white;
             text-decoration: none;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
             border-radius: 30px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
             position: relative;
             overflow: hidden;
             border: 2px solid transparent;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
         }
 
         .continue-btn::before {
@@ -182,93 +99,37 @@
             opacity: 1;
         }
 
-        .continue-btn i {
-            margin-right: 8px;
-            font-size: 1.2em;
-        }
-
-        .arrow {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .continue-btn:hover .arrow {
-            transform: translateX(4px);
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 2rem;
-            text-align: center;
-            width: 100%;
-            padding: 1rem 0;
-        }
-
-        /* Glow Animation */
         @keyframes glow {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
 
-        /* Mobile Responsiveness */
+        /* Responsive Adjustments */
         @media (max-width: 480px) {
-            .instructions-container {
-                padding: 1.5rem;
-            }
-            
-            .profile-circle {
-                margin-bottom: 1.5rem;
-            }
-            
-            .instructions {
-                padding: 1rem;
-            }
-            
-            .continue-btn {
-                padding: 0.7rem 1.5rem;
+            .container {
+                padding: 15px;
+                max-width: 95%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Video Background -->
-    <video autoplay muted loop id="indexVideo">
+    <video autoplay muted loop id="bgVideo">
         <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
     </video>
 
-    <div class="instructions-container">
-        <div class="profile-circle">
-            <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile">
-        </div>
-        
+    <div class="container">
+        <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile" class="profile-img">
         <h1>Fork Verifier</h1>
-        
-        <div class="instructions">
-            <h2>Instructions</h2>
-            <ol>
-                <li><strong>1.</strong> Click on the button below and enter fork interface</li>
-                <li><strong>2.</strong> Add your GitHub username and press fork</li>
-                <li><strong>3.</strong> Wait for the site to validate if you have forked or not</li>
-                <li><strong>4.</strong> The site will generate a deployment link automatically if you've forked the repo</li>
-                <li><strong>5.</strong> Please press on the button "Fork Now" if you haven't forked the repo to access your deployment link</li>
-                <li><strong>6.</strong> Get session on the drop menu by the top left corner</li>
-            </ol>
-        </div>
-        
-        <a href="next.html" class="continue-btn">
-            <i class="fab fa-github"></i> Continue
-            <span class="arrow">→</span>
-        </a>
-
-        <div class="footer">
-            <svg width="150" height="30" xmlns="http://www.w3.org/2000/svg">
-                <text x="0" y="20" font-family="Arial" font-size="16" fill="#fff">
-                    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
-                    Made by Marisel
-                </text>
-            </svg>
-        </div>
+        <h2>Instructions</h2>
+        <ol style="text-align: left; display: inline-block; padding-left: 20px;">
+            <li>Click continue button below</li>
+            <li>Add your GitHub username</li>
+            <li>Wait for validation</li>
+            <li>Get your deployment link</li>
+        </ol>
+        <a href="next.html" class="continue-btn">Continue →</a>
     </div>
 </body>
 </html>
