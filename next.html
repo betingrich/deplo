@@ -3,41 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deploy Your Bot</title>
+    <title>Fork Verifier - Instructions</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Toggle Menu -->
-    <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="menu" id="menu">
-        <ul>
-            <li><a href="https://botto2-608d38531298.herokuapp.com/" target="_blank">Get Session</a></li>
-            <li><a href="https://whatsapp.com/channel/0029Vajvy2kEwEjwAKP4SI0x" target="_blank">Follow Our Channel</a></li>
-        </ul>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container">
-        <h1>Deploy Your Bot</h1>
-        <p>Enter your GitHub username to check if you've forked the repo.</p>
-        <input type="text" id="username" placeholder="GitHub Username">
-        <button id="checkFork">Check Fork</button>
-        <div id="message"></div>
-        <!-- Fork and Sync Buttons -->
-        <button id="forkRepo" style="display: none;">Fork Now</button>
-        <button id="syncRepo" style="display: none;">Sync Repo</button>
-    </div>
-
     <!-- Video Background -->
     <video autoplay muted loop id="bgVideo">
-        <source src="https://files.catbox.moe/t2f7qm.mp4" type="video/mp4">
-        Your browser does not support the video tag.
+        <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
     </video>
 
-    <script src="script.js"></script>
+    <div class="instructions-container">
+        <div class="profile-circle">
+            <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile">
+        </div>
+        
+        <h1><strong>Fork Verifier</strong></h1>
+        
+        <div class="instructions">
+            <h2><strong>Instructions</strong></h2>
+            <ol>
+                <li><strong>1.</strong> Click on the button below and enter fork interface</li>
+                <li><strong>2.</strong> Add your GitHub username and press fork</li>
+                <li><strong>3.</strong> Wait for the site to validate if you have forked or not</li>
+                <li><strong>4.</strong> The site will generate a deployment link automatically if you've forked the repo</li>
+                <li><strong>5.</strong> Please press on the button "Fork Now" if you haven't forked the repo to access your deployment link</li>
+                <li><strong>6.</strong> Get session on the drop menu by the top left corner</li>
+            </ol>
+        </div>
+        
+        <a href="next.html" class="continue-btn">
+            <i class="fab fa-github"></i> Continue
+            <span class="arrow">→</span>
+        </a>
+
+        <!-- Typing SVG Footer -->
+        <div class="footer">
+            <svg width="150" height="30" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="20" font-family="Arial" font-size="16" fill="#fff">
+                    <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
+                    Made by Marisel
+                </text>
+            </svg>
+        </div>
+    </div>
 </body>
 </html>
