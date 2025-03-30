@@ -6,16 +6,17 @@
     <title>Fork Verifier - Instructions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Index-specific CSS */
+        /* General Styles */
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
             color: white;
+            overflow: hidden;
         }
 
+        /* Video Background */
         #indexVideo {
             position: fixed;
             top: 0;
@@ -26,6 +27,7 @@
             z-index: -1;
         }
 
+        /* Main Container */
         .instructions-container {
             max-width: 600px;
             margin: 0 auto;
@@ -40,9 +42,14 @@
             background-color: rgba(0, 0, 0, 0.6);
         }
 
+        /* Profile Circle - Fully Responsive */
         .profile-circle {
-            width: 150px;
-            height: 150px;
+            width: 20vmin;
+            height: 20vmin;
+            min-width: 120px;
+            min-height: 120px;
+            max-width: 180px;
+            max-height: 180px;
             border-radius: 50%;
             overflow: hidden;
             margin-bottom: 2rem;
@@ -56,13 +63,31 @@
             object-fit: cover;
         }
 
+        /* Title with Neon Animation */
         h1 {
             margin-bottom: 2rem;
-            font-size: 2.2rem;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
-            font-weight: 700;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            position: relative;
+            display: inline-block;
+            padding: 0 15px;
         }
 
+        h1::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: glow 3s linear infinite;
+            opacity: 0.7;
+        }
+
+        /* Instructions Box */
         .instructions {
             text-align: left;
             margin-bottom: 2rem;
@@ -72,16 +97,32 @@
             width: 100%;
             box-sizing: border-box;
             border: 1px solid rgba(0, 255, 204, 0.3);
+            position: relative;
+        }
+
+        .instructions::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: glow 3s linear infinite;
+            opacity: 0.3;
         }
 
         .instructions h2 {
             margin-top: 0;
             border-bottom: 1px solid rgba(0, 255, 204, 0.3);
             padding-bottom: 0.5rem;
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: clamp(1.3rem, 4vw, 1.8rem);
         }
 
+        /* Numbered Instructions */
         .instructions ol {
             list-style-type: none;
             padding-left: 0;
@@ -93,6 +134,7 @@
             padding-left: 2em;
             margin-bottom: 0.8rem;
             line-height: 1.5;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
         }
 
         .instructions li strong {
@@ -102,6 +144,7 @@
             color: #00ffcc;
         }
 
+        /* Continue Button with Neon Animation */
         .continue-btn {
             display: inline-flex;
             align-items: center;
@@ -116,7 +159,7 @@
             position: relative;
             overflow: hidden;
             border: 2px solid transparent;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
         }
 
         .continue-btn::before {
@@ -141,25 +184,19 @@
 
         .continue-btn i {
             margin-right: 8px;
-            font-size: 1.2rem;
+            font-size: 1.2em;
         }
 
         .arrow {
             margin-left: 8px;
             transition: transform 0.3s ease;
-            font-size: 1.2rem;
         }
 
         .continue-btn:hover .arrow {
             transform: translateX(4px);
         }
 
-        @keyframes glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        /* Footer */
         .footer {
             margin-top: 2rem;
             text-align: center;
@@ -167,54 +204,35 @@
             padding: 1rem 0;
         }
 
-        @media (max-width: 600px) {
+        /* Glow Animation */
+        @keyframes glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 480px) {
             .instructions-container {
                 padding: 1.5rem;
             }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .instructions h2 {
-                font-size: 1.3rem;
-            }
-
+            
             .profile-circle {
-                width: 120px;
-                height: 120px;
                 margin-bottom: 1.5rem;
             }
-
-            .instructions li {
-                padding-left: 1.8em;
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .instructions-container {
-                padding: 1rem;
-            }
-
-            h1 {
-                font-size: 1.5rem;
-                margin-bottom: 1.5rem;
-            }
-
+            
             .instructions {
                 padding: 1rem;
             }
-
+            
             .continue-btn {
                 padding: 0.7rem 1.5rem;
-                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Video Background (different from next.html) -->
+    <!-- Video Background -->
     <video autoplay muted loop id="indexVideo">
         <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
     </video>
