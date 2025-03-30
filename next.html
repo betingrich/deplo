@@ -5,14 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deploy Your Bot</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Video Background -->
-    <video autoplay muted loop id="bgVideo">
-        <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
-    </video>
-
     <!-- Toggle Menu -->
     <div class="menu-toggle" id="menuToggle">
         <span></span>
@@ -29,26 +23,21 @@
     <!-- Main Content -->
     <div class="container">
         <h1>Deploy Your Bot</h1>
-        <p class="subtext">Enter your GitHub username to check if you've forked the repo</p>
+        <p>Enter your GitHub username to check if you've forked the repo.</p>
         <input type="text" id="username" placeholder="GitHub Username">
         <button id="checkFork">Check Fork</button>
         <div id="message"></div>
         <!-- Fork and Sync Buttons -->
-        <button id="forkRepo" style="display: none;">Fork Now <i class="fas fa-code-branch"></i></button>
-        <button id="syncRepo" style="display: none;">Sync Repo <i class="fas fa-sync-alt"></i></button>
+        <button id="forkRepo" style="display: none;">Fork Now</button>
+        <button id="syncRepo" style="display: none;">Sync Repo</button>
     </div>
 
-    <!-- Footer -->
-    <div class="footer">
-        <svg width="150" height="30" xmlns="http://www.w3.org/2000/svg">
-            <text x="0" y="20" font-family="Roboto" font-size="16" fill="#fff">
-                <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/>
-                Made by Marisel
-            </text>
-        </svg>
-    </div>
+    <!-- Video Background -->
+    <video autoplay muted loop id="bgVideo">
+        <source src="https://files.catbox.moe/t2f7qm.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <script src="script.js"></script>
 </body>
 </html>
