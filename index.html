@@ -18,18 +18,31 @@
             font-family: Arial, sans-serif;
             color: white;
             overflow-y: auto;
-            background: #000;
         }
 
-        /* Video Background */
+        /* Video Background Fix */
         #bgVideo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            object-fit: cover;
+        }
+
+        /* Fallback Background */
+        .bg-fallback {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            z-index: -1;
+            background: #000;
+            z-index: -2;
         }
 
         /* Main Container */
@@ -39,6 +52,7 @@
             margin: 0 auto;
             padding: 30px 20px;
             text-align: center;
+            position: relative;
         }
 
         /* Profile Image */
@@ -52,7 +66,7 @@
             display: block;
         }
 
-        /* Instruction Box Styling */
+        /* Instruction Box */
         .instructions-box {
             background: rgba(0, 0, 0, 0.5);
             border: 2px solid #00ffcc;
@@ -162,8 +176,11 @@
     </style>
 </head>
 <body>
+    <!-- Video Background with Fallback -->
+    <div class="bg-fallback"></div>
     <video autoplay muted loop id="bgVideo">
         <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-circuits-97.mp4" type="video/mp4">
     </video>
 
     <div class="container">
@@ -185,5 +202,27 @@
         
         <a href="next.html" class="continue-btn">Continue →</a>
     </div>
+
+    <script>
+        // Video background handling
+        const video = document.getElementById('bgVideo');
+        
+        // Force video play and handle errors
+        const playVideo = () => {
+            video.play().catch(error => {
+                console.log('Video autoplay blocked, showing fallback');
+                document.querySelector('.bg-fallback').style.background = "linear-gradient(45deg, #1a1a1a, #2a2a2a)";
+            });
+        };
+
+        // Initialize video
+        video.muted = true; // Required for autoplay
+        playVideo();
+        
+        // Handle visibility changes
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) playVideo();
+        });
+    </script>
 </body>
 </html>
