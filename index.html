@@ -4,12 +4,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fork Verifier - Instructions</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Index-specific CSS */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        #indexVideo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .instructions-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .profile-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 3px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h1 {
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+            font-weight: 700;
+        }
+
+        .instructions {
+            text-align: left;
+            margin-bottom: 2rem;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 1.5rem;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid rgba(0, 255, 204, 0.3);
+        }
+
+        .instructions h2 {
+            margin-top: 0;
+            border-bottom: 1px solid rgba(0, 255, 204, 0.3);
+            padding-bottom: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .instructions ol {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        .instructions li {
+            position: relative;
+            padding-left: 2em;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .instructions li strong {
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+
+        .continue-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            background-color: transparent;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+            background-size: 400% 400%;
+            z-index: -1;
+            animation: glow 3s linear infinite;
+            opacity: 0.8;
+        }
+
+        .continue-btn:hover::before {
+            animation: glow 1s linear infinite;
+            opacity: 1;
+        }
+
+        .continue-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        .arrow {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .continue-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        @keyframes glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            width: 100%;
+            padding: 1rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .instructions-container {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .instructions h2 {
+                font-size: 1.3rem;
+            }
+
+            .profile-circle {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 1.5rem;
+            }
+
+            .instructions li {
+                padding-left: 1.8em;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .instructions-container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .instructions {
+                padding: 1rem;
+            }
+
+            .continue-btn {
+                padding: 0.7rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Video Background -->
-    <video autoplay muted loop id="bgVideo">
+    <!-- Video Background (different from next.html) -->
+    <video autoplay muted loop id="indexVideo">
         <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
     </video>
 
@@ -18,10 +224,10 @@
             <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile">
         </div>
         
-        <h1><strong>Fork Verifier</strong></h1>
+        <h1>Fork Verifier</h1>
         
         <div class="instructions">
-            <h2><strong>Instructions</strong></h2>
+            <h2>Instructions</h2>
             <ol>
                 <li><strong>1.</strong> Click on the button below and enter fork interface</li>
                 <li><strong>2.</strong> Add your GitHub username and press fork</li>
@@ -37,7 +243,6 @@
             <span class="arrow">→</span>
         </a>
 
-        <!-- Typing SVG Footer -->
         <div class="footer">
             <svg width="150" height="30" xmlns="http://www.w3.org/2000/svg">
                 <text x="0" y="20" font-family="Arial" font-size="16" fill="#fff">
