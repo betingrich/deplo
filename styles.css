@@ -5,31 +5,45 @@ body, html {
     height: 100%;
     font-family: Arial, sans-serif;
     overflow: hidden;
+    color: white;
 }
 
-/* Instructions Page Styles */
+/* Video Background */
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Instructions Container */
 .instructions-container {
     max-width: 600px;
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
-    background-color: #fffaf0;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
 }
 
+/* Circular Profile */
 .profile-circle {
     width: 150px;
     height: 150px;
     border-radius: 50%;
     overflow: hidden;
     margin-bottom: 2rem;
-    border: 3px solid #333;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 3px solid #00ffcc;
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
 }
 
 .profile-circle img {
@@ -38,32 +52,32 @@ body, html {
     object-fit: cover;
 }
 
+/* Headings */
 h1 {
-    color: #333;
     margin-bottom: 2rem;
     font-size: 2.2rem;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
 }
 
-/* Bold headings */
 h1 strong, h2 strong {
     font-weight: 700;
 }
 
+/* Instructions */
 .instructions {
     text-align: left;
     margin-bottom: 2rem;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     width: 100%;
     box-sizing: border-box;
+    border: 1px solid rgba(0, 255, 204, 0.3);
 }
 
 .instructions h2 {
-    color: #333;
     margin-top: 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid rgba(0, 255, 204, 0.3);
     padding-bottom: 0.5rem;
     font-size: 1.5rem;
 }
@@ -79,7 +93,6 @@ h1 strong, h2 strong {
     position: relative;
     padding-left: 2em;
     margin-bottom: 0.8rem;
-    color: #555;
     line-height: 1.5;
 }
 
@@ -87,30 +100,50 @@ h1 strong, h2 strong {
     position: absolute;
     left: 0;
     font-weight: bold;
-    color: #333;
+    color: #00ffcc;
 }
 
+/* Continue Button */
 .continue-btn {
     display: inline-flex;
     align-items: center;
     padding: 0.8rem 2rem;
-    background-color: #4CAF50;
+    background-color: transparent;
     color: white;
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
     transition: all 0.3s ease;
     margin-top: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border: none;
-    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid transparent;
     font-size: 1rem;
 }
 
-.continue-btn:hover {
-    background-color: #45a049;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.continue-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 30px;
+    background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: glow 3s linear infinite;
+    opacity: 0.8;
+}
+
+.continue-btn:hover::before {
+    animation: glow 1s linear infinite;
+    opacity: 1;
+}
+
+.continue-btn i {
+    margin-right: 8px;
+    font-size: 1.2rem;
 }
 
 .arrow {
@@ -121,174 +154,6 @@ h1 strong, h2 strong {
 
 .continue-btn:hover .arrow {
     transform: translateX(4px);
-}
-
-/* Typing SVG Footer */
-.footer {
-    margin-top: 2rem;
-    text-align: center;
-    width: 100%;
-    padding: 1rem 0;
-}
-
-.footer svg {
-    display: inline-block;
-    vertical-align: middle;
-    font-family: 'Arial', sans-serif;
-}
-
-/* Next Page Styles */
-/* Video Background */
-#bgVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-}
-
-/* Toggle Menu */
-.menu-toggle {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    cursor: pointer;
-    z-index: 1000;
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: white;
-    margin: 5px 0;
-    transition: 0.4s;
-}
-
-.menu {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    transition: 0.4s;
-    z-index: 999;
-    backdrop-filter: blur(5px);
-}
-
-.menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 60px 0 0 20px;
-}
-
-.menu ul li {
-    margin: 20px 0;
-}
-
-.menu ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-    display: block;
-    padding: 5px 0;
-}
-
-.menu ul li a:hover {
-    color: #00ffcc;
-}
-
-/* Menu Open State */
-.menu.active {
-    left: 0;
-}
-
-/* Container */
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    width: 90%;
-    max-width: 400px;
-    backdrop-filter: blur(5px);
-}
-
-/* Input Field */
-input {
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    width: 100%;
-    box-sizing: border-box;
-    background: rgba(255, 255, 255, 0.1);
-    color: #00ffcc;
-    border: 2px solid #00ffcc;
-    outline: none;
-    transition: all 0.3s ease;
-}
-
-input:focus {
-    background: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-}
-
-/* Placeholder Text */
-input::placeholder {
-    color: #00ffcc;
-    opacity: 0.7;
-}
-
-/* Buttons */
-button {
-    padding: 0.8rem 1.5rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    margin: 0.5rem 0;
-    border: 2px solid transparent;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-/* Neon Edge Animation */
-button::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-    background-size: 400% 400%;
-    z-index: -1;
-    animation: glow 3s linear infinite;
-    opacity: 0.8;
-}
-
-button:hover::before {
-    animation: glow 1s linear infinite;
-    opacity: 1;
 }
 
 @keyframes glow {
@@ -303,28 +168,25 @@ button:hover::before {
     }
 }
 
-/* Fork Now Button */
-#forkRepo {
-    border-color: #00ffcc;
+/* Footer */
+.footer {
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+    padding: 1rem 0;
 }
 
-/* Sync Repo Button */
-#syncRepo {
-    border-color: #ff00ff;
-}
-
-/* Message */
-#message {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-    color: white;
-    min-height: 20px;
+/* Next Page Container - Remove Blur */
+.container {
+    backdrop-filter: none !important;
+    background: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Responsive Design */
 @media (max-width: 600px) {
     .instructions-container {
         padding: 1.5rem;
+        backdrop-filter: none;
     }
 
     h1 {
@@ -349,24 +211,6 @@ button:hover::before {
     .footer svg {
         width: 120px;
         height: 24px;
-    }
-
-    .container {
-        padding: 1.5rem;
-    }
-
-    input {
-        padding: 0.7rem;
-        font-size: 0.9rem;
-    }
-
-    button {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-    }
-
-    #message {
-        font-size: 1rem;
     }
 }
 
