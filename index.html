@@ -20,7 +20,7 @@
             overflow-y: auto;
         }
 
-        /* Video Background Fix */
+        /* Video Background */
         #bgVideo {
             position: fixed;
             top: 50%;
@@ -73,27 +73,12 @@
             border-radius: 10px;
             padding: 25px;
             margin: 20px 0;
-            position: relative;
-        }
-
-        .instructions-box::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-            z-index: -1;
-            animation: glow 3s linear infinite;
         }
 
         /* Text Styling */
         h1 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
         h2 {
@@ -133,28 +118,6 @@
             background: rgba(0, 0, 0, 0.5);
             border: 2px solid #00ffcc;
             border-radius: 30px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .continue-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-            z-index: -1;
-            animation: glow 3s linear infinite;
-            opacity: 0.5;
-        }
-
-        @keyframes glow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
         }
 
         /* Responsive Design */
@@ -176,11 +139,10 @@
     </style>
 </head>
 <body>
-    <!-- Video Background with Fallback -->
+    <!-- Video Background -->
     <div class="bg-fallback"></div>
     <video autoplay muted loop id="bgVideo">
         <source src="https://files.catbox.moe/egukq9.mp4" type="video/mp4">
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-blue-circuits-97.mp4" type="video/mp4">
     </video>
 
     <div class="container">
@@ -200,26 +162,22 @@
             </ol>
         </div>
         
-        <a href="next.html" class="continue-btn">Continue →</a>
+        <a href="next.html" class="continue-btn">Continue</a>
     </div>
 
     <script>
         // Video background handling
         const video = document.getElementById('bgVideo');
         
-        // Force video play and handle errors
         const playVideo = () => {
             video.play().catch(error => {
-                console.log('Video autoplay blocked, showing fallback');
-                document.querySelector('.bg-fallback').style.background = "linear-gradient(45deg, #1a1a1a, #2a2a2a)";
+                document.querySelector('.bg-fallback').style.background = "#000";
             });
         };
 
-        // Initialize video
-        video.muted = true; // Required for autoplay
+        video.muted = true;
         playVideo();
         
-        // Handle visibility changes
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) playVideo();
         });
