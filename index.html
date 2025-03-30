@@ -52,39 +52,63 @@
             display: block;
         }
 
-        /* Text Styling (Matches Your Reference Image) */
+        /* Instruction Box Styling */
+        .instructions-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ffcc;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .instructions-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+            z-index: -1;
+            animation: glow 3s linear infinite;
+        }
+
+        /* Text Styling */
         h1 {
             font-size: 1.8rem;
             margin-bottom: 10px;
-            font-weight: normal;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
         }
 
         h2 {
             font-size: 1.3rem;
-            margin-bottom: 25px;
-            font-weight: normal;
+            margin-bottom: 15px;
             color: #00ffcc;
         }
 
-        /* Instructions List (Clean, Minimalist Style) */
-        .instructions {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .instructions ol {
+        /* Instructions List */
+        .instructions-list {
             list-style-type: none;
-            display: inline-block;
             text-align: left;
         }
 
-        .instructions li {
+        .instructions-list li {
             margin-bottom: 12px;
             font-size: 1rem;
             line-height: 1.4;
+            position: relative;
+            padding-left: 2em;
         }
 
-        /* Continue Button (Matches Your Arrow Style) */
+        .instructions-list li strong {
+            position: absolute;
+            left: 0;
+            color: #00ffcc;
+        }
+
+        /* Continue Button */
         .continue-btn {
             display: inline-block;
             padding: 12px 35px;
@@ -92,17 +116,34 @@
             color: white;
             text-decoration: none;
             font-size: 1.1rem;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.5);
             border: 2px solid #00ffcc;
             border-radius: 30px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .continue-btn:hover {
-            background: rgba(0, 255, 204, 0.1);
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
+            z-index: -1;
+            animation: glow 3s linear infinite;
+            opacity: 0.5;
         }
 
-        /* Responsive Adjustments */
+        @keyframes glow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* Responsive Design */
         @media (max-width: 480px) {
             .container {
                 padding: 25px 15px;
@@ -114,8 +155,8 @@
             h1 {
                 font-size: 1.5rem;
             }
-            h2 {
-                font-size: 1.1rem;
+            .instructions-box {
+                padding: 20px 15px;
             }
         }
     </style>
@@ -129,11 +170,10 @@
         <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile" class="profile-img">
         
         <h1>Fork Verifier</h1>
-        <h2>Instructions</h2>
         
-        <div class="instructions">
-    <h2><strong>Instructions</strong></h2>
-            <ol>
+        <div class="instructions-box">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
                 <li><strong>1.</strong> Click on the button below and enter fork interface</li>
                 <li><strong>2.</strong> Add your GitHub username and press fork</li>
                 <li><strong>3.</strong> Wait for the site to validate if you have forked or not</li>
@@ -143,7 +183,7 @@
             </ol>
         </div>
         
-        <a href="next.html" class="continue-btn">Continue</a>
+        <a href="next.html" class="continue-btn">Continue →</a>
     </div>
 </body>
 </html>
