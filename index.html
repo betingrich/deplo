@@ -5,15 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fork Verifier</title>
     <style>
-        /* Base Styles */
-        body, html {
+        /* Base Reset */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
             width: 100%;
             height: 100%;
             font-family: Arial, sans-serif;
             color: white;
-            overflow-x: hidden;
+            overflow-y: auto;
+            background: #000;
         }
 
         /* Video Background */
@@ -29,87 +34,88 @@
 
         /* Main Container */
         .container {
-            max-width: 90%;
-            width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            box-sizing: border-box;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 30px 20px;
             text-align: center;
         }
 
         /* Profile Image */
         .profile-img {
-            width: 25vw;
-            height: 25vw;
-            max-width: 180px;
-            max-height: 180px;
-            min-width: 120px;
-            min-height: 120px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            margin: 0 auto 20px;
-            display: block;
+            margin: 0 auto 25px;
             border: 2px solid #00ffcc;
+            display: block;
         }
 
-        /* Text Elements */
+        /* Text Styling (Matches Your Reference Image) */
         h1 {
-            font-size: clamp(1.5rem, 5vw, 2.2rem);
-            margin: 0 0 15px 0;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: normal;
         }
 
         h2 {
-            font-size: clamp(1.2rem, 4vw, 1.6rem);
-            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-weight: normal;
+            color: #00ffcc;
         }
 
-        /* Continue Button */
+        /* Instructions List (Clean, Minimalist Style) */
+        .instructions {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .instructions ol {
+            list-style-type: none;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .instructions li {
+            margin-bottom: 12px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Continue Button (Matches Your Arrow Style) */
         .continue-btn {
             display: inline-block;
-            padding: 12px 30px;
-            margin: 20px 0;
+            padding: 12px 35px;
+            margin-top: 20px;
             color: white;
             text-decoration: none;
-            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            font-size: 1.1rem;
+            background: transparent;
+            border: 2px solid #00ffcc;
             border-radius: 30px;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
+            transition: all 0.3s ease;
         }
 
-        .continue-btn::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #00ffcc, #ff00ff, #00ffcc, #ff00ff);
-            background-size: 400% 400%;
-            z-index: -1;
-            animation: glow 3s linear infinite;
-            opacity: 0.8;
-        }
-
-        .continue-btn:hover::before {
-            animation: glow 1s linear infinite;
-            opacity: 1;
-        }
-
-        @keyframes glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .continue-btn:hover {
+            background: rgba(0, 255, 204, 0.1);
         }
 
         /* Responsive Adjustments */
         @media (max-width: 480px) {
             .container {
-                padding: 15px;
-                max-width: 95%;
+                padding: 25px 15px;
+            }
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -121,14 +127,22 @@
 
     <div class="container">
         <img src="https://files.catbox.moe/55y4e2.jpg" alt="Profile" class="profile-img">
+        
         <h1>Fork Verifier</h1>
         <h2>Instructions</h2>
-        <ol style="text-align: left; display: inline-block; padding-left: 20px;">
-            <li>Click continue button below</li>
-            <li>Add your GitHub username</li>
-            <li>Wait for validation</li>
-            <li>Get your deployment link</li>
-        </ol>
+        
+        <div class="instructions">
+    <h2><strong>Instructions</strong></h2>
+            <ol>
+                <li><strong>1.</strong> Click on the button below and enter fork interface</li>
+                <li><strong>2.</strong> Add your GitHub username and press fork</li>
+                <li><strong>3.</strong> Wait for the site to validate if you have forked or not</li>
+                <li><strong>4.</strong> The site will generate a deployment link automatically if you've forked the repo</li>
+                <li><strong>5.</strong> Please press on the button "Fork Now" if you haven't forked the repo to access your deployment link</li>
+                <li><strong>6.</strong> Get session on the drop menu by the top left corner</li>
+            </ol>
+        </div>
+        
         <a href="next.html" class="continue-btn">Continue →</a>
     </div>
 </body>
